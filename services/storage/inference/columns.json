@@ -1,0 +1,109 @@
+[
+   {
+      "array": [
+         "items"
+      ],
+      "columns": [
+         {
+            "key": "name",
+            "kind": "name",
+            "label": "Name",
+            "path": [
+               "name"
+            ],
+            "priority": "primary"
+         },
+         {
+            "key": "location",
+            "kind": "text",
+            "label": "Location",
+            "path": [
+               "location"
+            ],
+            "priority": "secondary"
+         },
+         {
+            "key": "storageClass",
+            "kind": "text",
+            "label": "Storage class",
+            "path": [
+               "storageClass"
+            ],
+            "priority": "secondary"
+         },
+         {
+            "key": "timeCreated",
+            "kind": "timestamp",
+            "label": "Created",
+            "path": [
+               "timeCreated"
+            ],
+            "priority": "tertiary"
+         },
+         {
+            "key": "versioning.enabled",
+            "kind": "boolean",
+            "label": "Versioning",
+            "path": [
+               "versioning",
+               "enabled"
+            ],
+            "priority": "tertiary"
+         }
+      ],
+      "method": "storage.buckets.list"
+   },
+   {
+      "array": [
+         "items"
+      ],
+      "columns": [
+         {
+            "key": "name",
+            "kind": "name",
+            "label": "Name",
+            "path": [
+               "name"
+            ],
+            "priority": "primary"
+         },
+         {
+            "key": "size",
+            "kind": "number",
+            "label": "Size",
+            "path": [
+               "size"
+            ],
+            "priority": "secondary"
+         },
+         {
+            "key": "storageClass",
+            "kind": "text",
+            "label": "Storage class",
+            "path": [
+               "storageClass"
+            ],
+            "priority": "secondary"
+         },
+         {
+            "key": "updated",
+            "kind": "timestamp",
+            "label": "Updated",
+            "path": [
+               "updated"
+            ],
+            "priority": "secondary"
+         },
+         {
+            "key": "contentType",
+            "kind": "text",
+            "label": "Content type",
+            "path": [
+               "contentType"
+            ],
+            "priority": "tertiary"
+         }
+      ],
+      "method": "storage.objects.list"
+   }
+]

@@ -1,0 +1,17 @@
+{
+  "include": [
+    "compute.addresses.list",
+    "compute.disks.list",
+    "compute.firewalls.list",
+    "compute.globalAddresses.list",
+    "compute.images.list",
+    "compute.instances.list",
+    "compute.machineTypes.list",
+    "compute.networks.list",
+    "compute.regions.list",
+    "compute.resourcePolicies.list",
+    "compute.snapshots.list",
+    "compute.subnetworks.list",
+    "compute.zones.list"
+  ]
+}

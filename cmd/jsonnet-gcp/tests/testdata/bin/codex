@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -euo pipefail
+dir=""; out=""
+while [ $# -gt 0 ]; do
+  case "$1" in
+    --cd) dir="$2"; shift 2 ;;
+    --output-last-message) out="$2"; shift 2 ;;
+    *) shift ;;
+  esac
+done
+input="$dir/input.json"
+jq -r '.method' "$input" >> "$FAKE_CODEX_LOG"
+jq '{method, array, columns: [{key: "name", path: ["name"], label: "Name", kind: "name", priority: "primary", reason: "fake"}, {key: "missing", path: ["doesNotExist"], label: "Missing", kind: "text", priority: "secondary", reason: "fake"}], confidence: "high", reason: "fake"}' "$input" > "$out"

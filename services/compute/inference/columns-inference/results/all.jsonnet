@@ -1,0 +1,15 @@
+[
+  import "compute.addresses.list.json",
+  import "compute.disks.list.json",
+  import "compute.firewalls.list.json",
+  import "compute.globalAddresses.list.json",
+  import "compute.images.list.json",
+  import "compute.instances.list.json",
+  import "compute.machineTypes.list.json",
+  import "compute.networks.list.json",
+  import "compute.regions.list.json",
+  import "compute.resourcePolicies.list.json",
+  import "compute.snapshots.list.json",
+  import "compute.subnetworks.list.json",
+  import "compute.zones.list.json",
+]
