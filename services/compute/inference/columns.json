@@ -1,0 +1,711 @@
+[
+   {
+      "array": [
+         "items"
+      ],
+      "columns": [
+         {
+            "key": "name",
+            "kind": "name",
+            "label": "Name",
+            "path": [
+               "name"
+            ],
+            "priority": "primary"
+         },
+         {
+            "key": "address",
+            "kind": "text",
+            "label": "IP address",
+            "path": [
+               "address"
+            ],
+            "priority": "secondary"
+         },
+         {
+            "key": "status",
+            "kind": "status",
+            "label": "Status",
+            "path": [
+               "status"
+            ],
+            "priority": "secondary"
+         },
+         {
+            "key": "region",
+            "kind": "text",
+            "label": "Region",
+            "path": [
+               "region"
+            ],
+            "priority": "secondary"
+         },
+         {
+            "key": "addressType",
+            "kind": "text",
+            "label": "Type",
+            "path": [
+               "addressType"
+            ],
+            "priority": "tertiary"
+         },
+         {
+            "key": "purpose",
+            "kind": "text",
+            "label": "Purpose",
+            "path": [
+               "purpose"
+            ],
+            "priority": "tertiary"
+         }
+      ],
+      "method": "compute.addresses.list"
+   },
+   {
+      "array": [
+         "items"
+      ],
+      "columns": [
+         {
+            "key": "name",
+            "kind": "name",
+            "label": "Name",
+            "path": [
+               "name"
+            ],
+            "priority": "primary"
+         },
+         {
+            "key": "status",
+            "kind": "status",
+            "label": "Status",
+            "path": [
+               "status"
+            ],
+            "priority": "secondary"
+         },
+         {
+            "key": "sizeGb",
+            "kind": "number",
+            "label": "Size (GB)",
+            "path": [
+               "sizeGb"
+            ],
+            "priority": "secondary"
+         },
+         {
+            "key": "type",
+            "kind": "text",
+            "label": "Type",
+            "path": [
+               "type"
+            ],
+            "priority": "secondary"
+         },
+         {
+            "key": "zone",
+            "kind": "text",
+            "label": "Zone",
+            "path": [
+               "zone"
+            ],
+            "priority": "tertiary"
+         }
+      ],
+      "method": "compute.disks.list"
+   },
+   {
+      "array": [
+         "items"
+      ],
+      "columns": [
+         {
+            "key": "name",
+            "kind": "name",
+            "label": "Name",
+            "path": [
+               "name"
+            ],
+            "priority": "primary"
+         },
+         {
+            "key": "direction",
+            "kind": "text",
+            "label": "Direction",
+            "path": [
+               "direction"
+            ],
+            "priority": "secondary"
+         },
+         {
+            "key": "priority",
+            "kind": "number",
+            "label": "Priority",
+            "path": [
+               "priority"
+            ],
+            "priority": "secondary"
+         },
+         {
+            "key": "disabled",
+            "kind": "boolean",
+            "label": "Disabled",
+            "path": [
+               "disabled"
+            ],
+            "priority": "secondary"
+         },
+         {
+            "key": "network",
+            "kind": "text",
+            "label": "Network",
+            "path": [
+               "network"
+            ],
+            "priority": "tertiary"
+         }
+      ],
+      "method": "compute.firewalls.list"
+   },
+   {
+      "array": [
+         "items"
+      ],
+      "columns": [
+         {
+            "key": "name",
+            "kind": "name",
+            "label": "Name",
+            "path": [
+               "name"
+            ],
+            "priority": "primary"
+         },
+         {
+            "key": "address",
+            "kind": "identifier",
+            "label": "IP address",
+            "path": [
+               "address"
+            ],
+            "priority": "secondary"
+         },
+         {
+            "key": "addressType",
+            "kind": "text",
+            "label": "Type",
+            "path": [
+               "addressType"
+            ],
+            "priority": "secondary"
+         },
+         {
+            "key": "status",
+            "kind": "status",
+            "label": "Status",
+            "path": [
+               "status"
+            ],
+            "priority": "secondary"
+         },
+         {
+            "key": "purpose",
+            "kind": "text",
+            "label": "Purpose",
+            "path": [
+               "purpose"
+            ],
+            "priority": "tertiary"
+         }
+      ],
+      "method": "compute.globalAddresses.list"
+   },
+   {
+      "array": [
+         "items"
+      ],
+      "columns": [
+         {
+            "key": "name",
+            "kind": "name",
+            "label": "Name",
+            "path": [
+               "name"
+            ],
+            "priority": "primary"
+         },
+         {
+            "key": "family",
+            "kind": "text",
+            "label": "Family",
+            "path": [
+               "family"
+            ],
+            "priority": "secondary"
+         },
+         {
+            "key": "status",
+            "kind": "status",
+            "label": "Status",
+            "path": [
+               "status"
+            ],
+            "priority": "secondary"
+         },
+         {
+            "key": "architecture",
+            "kind": "text",
+            "label": "Architecture",
+            "path": [
+               "architecture"
+            ],
+            "priority": "secondary"
+         },
+         {
+            "key": "diskSizeGb",
+            "kind": "number",
+            "label": "Disk size (GB)",
+            "path": [
+               "diskSizeGb"
+            ],
+            "priority": "tertiary"
+         },
+         {
+            "key": "creationTimestamp",
+            "kind": "timestamp",
+            "label": "Created",
+            "path": [
+               "creationTimestamp"
+            ],
+            "priority": "tertiary"
+         }
+      ],
+      "method": "compute.images.list"
+   },
+   {
+      "array": [
+         "items"
+      ],
+      "columns": [
+         {
+            "key": "name",
+            "kind": "name",
+            "label": "Name",
+            "path": [
+               "name"
+            ],
+            "priority": "primary"
+         },
+         {
+            "key": "status",
+            "kind": "status",
+            "label": "Status",
+            "path": [
+               "status"
+            ],
+            "priority": "secondary"
+         },
+         {
+            "key": "machineType",
+            "kind": "text",
+            "label": "Machine type",
+            "path": [
+               "machineType"
+            ],
+            "priority": "secondary"
+         },
+         {
+            "key": "zone",
+            "kind": "text",
+            "label": "Zone",
+            "path": [
+               "zone"
+            ],
+            "priority": "secondary"
+         },
+         {
+            "key": "creationTimestamp",
+            "kind": "timestamp",
+            "label": "Created",
+            "path": [
+               "creationTimestamp"
+            ],
+            "priority": "tertiary"
+         }
+      ],
+      "method": "compute.instances.list"
+   },
+   {
+      "array": [
+         "items"
+      ],
+      "columns": [
+         {
+            "key": "name",
+            "kind": "name",
+            "label": "Name",
+            "path": [
+               "name"
+            ],
+            "priority": "primary"
+         },
+         {
+            "key": "guestCpus",
+            "kind": "count",
+            "label": "vCPUs",
+            "path": [
+               "guestCpus"
+            ],
+            "priority": "secondary"
+         },
+         {
+            "key": "memoryMb",
+            "kind": "number",
+            "label": "Memory (MB)",
+            "path": [
+               "memoryMb"
+            ],
+            "priority": "secondary"
+         },
+         {
+            "key": "architecture",
+            "kind": "text",
+            "label": "Architecture",
+            "path": [
+               "architecture"
+            ],
+            "priority": "secondary"
+         },
+         {
+            "key": "zone",
+            "kind": "text",
+            "label": "Zone",
+            "path": [
+               "zone"
+            ],
+            "priority": "tertiary"
+         }
+      ],
+      "method": "compute.machineTypes.list"
+   },
+   {
+      "array": [
+         "items"
+      ],
+      "columns": [
+         {
+            "key": "name",
+            "kind": "name",
+            "label": "Name",
+            "path": [
+               "name"
+            ],
+            "priority": "primary"
+         },
+         {
+            "key": "IPv4Range",
+            "kind": "text",
+            "label": "IPv4 range",
+            "path": [
+               "IPv4Range"
+            ],
+            "priority": "secondary"
+         },
+         {
+            "key": "autoCreateSubnetworks",
+            "kind": "boolean",
+            "label": "Auto subnetworks",
+            "path": [
+               "autoCreateSubnetworks"
+            ],
+            "priority": "secondary"
+         },
+         {
+            "key": "routingMode",
+            "kind": "text",
+            "label": "Routing mode",
+            "path": [
+               "routingConfig",
+               "routingMode"
+            ],
+            "priority": "secondary"
+         },
+         {
+            "key": "creationTimestamp",
+            "kind": "timestamp",
+            "label": "Created",
+            "path": [
+               "creationTimestamp"
+            ],
+            "priority": "tertiary"
+         }
+      ],
+      "method": "compute.networks.list"
+   },
+   {
+      "array": [
+         "items"
+      ],
+      "columns": [
+         {
+            "key": "name",
+            "kind": "name",
+            "label": "Region",
+            "path": [
+               "name"
+            ],
+            "priority": "primary"
+         },
+         {
+            "key": "status",
+            "kind": "status",
+            "label": "Status",
+            "path": [
+               "status"
+            ],
+            "priority": "secondary"
+         },
+         {
+            "key": "creationTimestamp",
+            "kind": "timestamp",
+            "label": "Created",
+            "path": [
+               "creationTimestamp"
+            ],
+            "priority": "secondary"
+         },
+         {
+            "key": "deprecatedState",
+            "kind": "status",
+            "label": "Deprecation",
+            "path": [
+               "deprecated",
+               "state"
+            ],
+            "priority": "tertiary"
+         }
+      ],
+      "method": "compute.regions.list"
+   },
+   {
+      "array": [
+         "items"
+      ],
+      "columns": [
+         {
+            "key": "name",
+            "kind": "name",
+            "label": "Name",
+            "path": [
+               "name"
+            ],
+            "priority": "primary"
+         },
+         {
+            "key": "status",
+            "kind": "status",
+            "label": "Status",
+            "path": [
+               "status"
+            ],
+            "priority": "secondary"
+         },
+         {
+            "key": "region",
+            "kind": "text",
+            "label": "Region",
+            "path": [
+               "region"
+            ],
+            "priority": "secondary"
+         },
+         {
+            "key": "creationTimestamp",
+            "kind": "timestamp",
+            "label": "Created",
+            "path": [
+               "creationTimestamp"
+            ],
+            "priority": "tertiary"
+         }
+      ],
+      "method": "compute.resourcePolicies.list"
+   },
+   {
+      "array": [
+         "items"
+      ],
+      "columns": [
+         {
+            "key": "name",
+            "kind": "name",
+            "label": "Name",
+            "path": [
+               "name"
+            ],
+            "priority": "primary"
+         },
+         {
+            "key": "status",
+            "kind": "status",
+            "label": "Status",
+            "path": [
+               "status"
+            ],
+            "priority": "secondary"
+         },
+         {
+            "key": "creationTimestamp",
+            "kind": "timestamp",
+            "label": "Created",
+            "path": [
+               "creationTimestamp"
+            ],
+            "priority": "secondary"
+         },
+         {
+            "key": "diskSizeGb",
+            "kind": "number",
+            "label": "Disk Size (GB)",
+            "path": [
+               "diskSizeGb"
+            ],
+            "priority": "secondary"
+         },
+         {
+            "key": "storageBytes",
+            "kind": "count",
+            "label": "Storage (bytes)",
+            "path": [
+               "storageBytes"
+            ],
+            "priority": "tertiary"
+         },
+         {
+            "key": "snapshotType",
+            "kind": "text",
+            "label": "Type",
+            "path": [
+               "snapshotType"
+            ],
+            "priority": "tertiary"
+         }
+      ],
+      "method": "compute.snapshots.list"
+   },
+   {
+      "array": [
+         "items"
+      ],
+      "columns": [
+         {
+            "key": "name",
+            "kind": "name",
+            "label": "Name",
+            "path": [
+               "name"
+            ],
+            "priority": "primary"
+         },
+         {
+            "key": "region",
+            "kind": "text",
+            "label": "Region",
+            "path": [
+               "region"
+            ],
+            "priority": "secondary"
+         },
+         {
+            "key": "ipCidrRange",
+            "kind": "text",
+            "label": "IPv4 range",
+            "path": [
+               "ipCidrRange"
+            ],
+            "priority": "secondary"
+         },
+         {
+            "key": "network",
+            "kind": "identifier",
+            "label": "Network",
+            "path": [
+               "network"
+            ],
+            "priority": "secondary"
+         },
+         {
+            "key": "purpose",
+            "kind": "text",
+            "label": "Purpose",
+            "path": [
+               "purpose"
+            ],
+            "priority": "tertiary"
+         },
+         {
+            "key": "state",
+            "kind": "status",
+            "label": "State",
+            "path": [
+               "state"
+            ],
+            "priority": "tertiary"
+         }
+      ],
+      "method": "compute.subnetworks.list"
+   },
+   {
+      "array": [
+         "items"
+      ],
+      "columns": [
+         {
+            "key": "name",
+            "kind": "name",
+            "label": "Name",
+            "path": [
+               "name"
+            ],
+            "priority": "primary"
+         },
+         {
+            "key": "region",
+            "kind": "identifier",
+            "label": "Region",
+            "path": [
+               "region"
+            ],
+            "priority": "secondary"
+         },
+         {
+            "key": "status",
+            "kind": "status",
+            "label": "Status",
+            "path": [
+               "status"
+            ],
+            "priority": "secondary"
+         },
+         {
+            "key": "creationTimestamp",
+            "kind": "timestamp",
+            "label": "Created",
+            "path": [
+               "creationTimestamp"
+            ],
+            "priority": "tertiary"
+         },
+         {
+            "key": "supportsPzs",
+            "kind": "boolean",
+            "label": "Supports PZS",
+            "path": [
+               "supportsPzs"
+            ],
+            "priority": "tertiary"
+         }
+      ],
+      "method": "compute.zones.list"
+   }
+]

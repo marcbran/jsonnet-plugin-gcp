@@ -22,9 +22,13 @@ vuln: vuln-go
 
 build:
     {{tool}} jpoet pkg build
+    rm -rf arcourse/build && {{tool}} jpoet pkg build arcourse
+    for dir in services/*/arcourse/; do rm -rf "$dir/build" && {{tool}} jpoet pkg build "$dir" || exit 1; done
 
 push: build
     {{tool}} jpoet pkg push
+    {{tool}} jpoet pkg push arcourse
+    for dir in services/*/arcourse/; do {{tool}} jpoet pkg push "$dir" || exit 1; done
 
 update-models:
     #!/usr/bin/env bash
@@ -43,3 +47,19 @@ test-e2e:
     go test -v -tags e2e ./tests/...
 
 ci: lint vuln test build test-e2e
+
+arcourse-gen service:
+    go run ./cmd/jsonnet-gcp gen "{{service}}" --inputs "services/{{service}}/inference" --out "services/{{service}}/arcourse"
+
+arcourse-infer service:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    extra=()
+    if [ -n "${LIMIT:-}" ]; then extra+=(--limit "$LIMIT"); fi
+    if [ -n "${MODEL:-}" ]; then extra+=(--model "$MODEL"); fi
+    if [ "${FORCE:-}" = "1" ]; then extra+=(--force); fi
+    go run ./cmd/jsonnet-gcp columns infer "{{service}}" \
+      --workdir "services/{{service}}/inference" \
+      "${extra[@]+"${extra[@]}"}"
+
+arcourse-infer-service service: (arcourse-infer service) (arcourse-gen service)

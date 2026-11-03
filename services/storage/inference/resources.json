@@ -1,0 +1,11 @@
+{
+  "title": "Cloud Storage",
+  "include": [
+    "storage.buckets.list",
+    "storage.objects.list"
+  ],
+  "segments": {
+    "b": "buckets",
+    "o": "objects"
+  }
+}
