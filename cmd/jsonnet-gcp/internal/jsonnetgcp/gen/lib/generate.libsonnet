@@ -193,7 +193,8 @@ local isRouteVar(seg) = std.startsWith(seg, '$');
 
   local detailNode(c) =
     adds([view('resource'), mixin('project'), j.Var('referenced'), prettyObject([
-      objectField('data', callExpr(c.detail.method, paramsExpr(c.vars + [c.detail.param], [], false))),
+      hiddenField('response', callExpr(c.detail.method, paramsExpr(c.vars + [c.detail.param], [], false))),
+      objectField('data', selfMember('response')),
     ], 0)]),
 
   local nodes = std.flattenArrays([

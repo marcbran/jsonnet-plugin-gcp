@@ -137,13 +137,14 @@ local referenced = gcp.referenced {
     ],
   }],
   [['gcp', '$project', 'compute', 'global', 'addresses', '$address'], a.resource.node + gcp.project + referenced + {
-    data: call(
+    response:: call(
       self.ctx,
       'compute.globalAddresses.get',
       {
         address: $.address,
       }
     ),
+    data: self.response,
   }],
   [['gcp', '$project', 'compute', 'global', 'firewalls'], a.table.node + gcp.project + gcp.paginated + {
     response:: call(
@@ -178,13 +179,14 @@ local referenced = gcp.referenced {
     ],
   }],
   [['gcp', '$project', 'compute', 'global', 'firewalls', '$firewall'], a.resource.node + gcp.project + referenced + {
-    data: call(
+    response:: call(
       self.ctx,
       'compute.firewalls.get',
       {
         firewall: $.firewall,
       }
     ),
+    data: self.response,
   }],
   [['gcp', '$project', 'compute', 'global', 'images'], a.table.node + gcp.project + gcp.paginated + {
     response:: call(
@@ -220,13 +222,14 @@ local referenced = gcp.referenced {
     ],
   }],
   [['gcp', '$project', 'compute', 'global', 'images', '$image'], a.resource.node + gcp.project + referenced + {
-    data: call(
+    response:: call(
       self.ctx,
       'compute.images.get',
       {
         image: $.image,
       }
     ),
+    data: self.response,
   }],
   [['gcp', '$project', 'compute', 'global', 'networks'], a.table.node + gcp.project + gcp.paginated + {
     response:: call(
@@ -261,13 +264,14 @@ local referenced = gcp.referenced {
     ],
   }],
   [['gcp', '$project', 'compute', 'global', 'networks', '$network'], a.resource.node + gcp.project + referenced + {
-    data: call(
+    response:: call(
       self.ctx,
       'compute.networks.get',
       {
         network: $.network,
       }
     ),
+    data: self.response,
   }],
   [['gcp', '$project', 'compute', 'global', 'snapshots'], a.table.node + gcp.project + gcp.paginated + {
     response:: call(
@@ -303,13 +307,14 @@ local referenced = gcp.referenced {
     ],
   }],
   [['gcp', '$project', 'compute', 'global', 'snapshots', '$snapshot'], a.resource.node + gcp.project + referenced + {
-    data: call(
+    response:: call(
       self.ctx,
       'compute.snapshots.get',
       {
         snapshot: $.snapshot,
       }
     ),
+    data: self.response,
   }],
   [['gcp', '$project', 'compute', 'instances'], a.table.node + gcp.project + gcp.paginated + gcp.aggregated + {
     itemsKey:: 'instances',
@@ -415,13 +420,14 @@ local referenced = gcp.referenced {
     ],
   }],
   [['gcp', '$project', 'compute', 'regions', '$region'], a.resource.node + gcp.project + referenced + {
-    data: call(
+    response:: call(
       self.ctx,
       'compute.regions.get',
       {
         region: $.region,
       }
     ),
+    data: self.response,
   }],
   [['gcp', '$project', 'compute', 'regions', '$region', 'addresses'], a.table.node + gcp.project + gcp.paginated + {
     response:: call(
@@ -457,7 +463,7 @@ local referenced = gcp.referenced {
     ],
   }],
   [['gcp', '$project', 'compute', 'regions', '$region', 'addresses', '$address'], a.resource.node + gcp.project + referenced + {
-    data: call(
+    response:: call(
       self.ctx,
       'compute.addresses.get',
       {
@@ -465,6 +471,7 @@ local referenced = gcp.referenced {
         address: $.address,
       }
     ),
+    data: self.response,
   }],
   [['gcp', '$project', 'compute', 'regions', '$region', 'resourcePolicies'], a.table.node + gcp.project + gcp.paginated + {
     response:: call(
@@ -498,7 +505,7 @@ local referenced = gcp.referenced {
     ],
   }],
   [['gcp', '$project', 'compute', 'regions', '$region', 'resourcePolicies', '$resourcePolicy'], a.resource.node + gcp.project + referenced + {
-    data: call(
+    response:: call(
       self.ctx,
       'compute.resourcePolicies.get',
       {
@@ -506,6 +513,7 @@ local referenced = gcp.referenced {
         resourcePolicy: $.resourcePolicy,
       }
     ),
+    data: self.response,
   }],
   [['gcp', '$project', 'compute', 'regions', '$region', 'subnetworks'], a.table.node + gcp.project + gcp.paginated + {
     response:: call(
@@ -543,7 +551,7 @@ local referenced = gcp.referenced {
     ],
   }],
   [['gcp', '$project', 'compute', 'regions', '$region', 'subnetworks', '$subnetwork'], a.resource.node + gcp.project + referenced + {
-    data: call(
+    response:: call(
       self.ctx,
       'compute.subnetworks.get',
       {
@@ -551,6 +559,7 @@ local referenced = gcp.referenced {
         subnetwork: $.subnetwork,
       }
     ),
+    data: self.response,
   }],
   [['gcp', '$project', 'compute', 'resourcePolicies'], a.table.node + gcp.project + gcp.paginated + gcp.aggregated + {
     itemsKey:: 'resourcePolicies',
@@ -659,13 +668,14 @@ local referenced = gcp.referenced {
     ],
   }],
   [['gcp', '$project', 'compute', 'zones', '$zone'], a.resource.node + gcp.project + referenced + {
-    data: call(
+    response:: call(
       self.ctx,
       'compute.zones.get',
       {
         zone: $.zone,
       }
     ),
+    data: self.response,
   }],
   [['gcp', '$project', 'compute', 'zones', '$zone', 'disks'], a.table.node + gcp.project + gcp.paginated + {
     response:: call(
@@ -700,7 +710,7 @@ local referenced = gcp.referenced {
     ],
   }],
   [['gcp', '$project', 'compute', 'zones', '$zone', 'disks', '$disk'], a.resource.node + gcp.project + referenced + {
-    data: call(
+    response:: call(
       self.ctx,
       'compute.disks.get',
       {
@@ -708,6 +718,7 @@ local referenced = gcp.referenced {
         disk: $.disk,
       }
     ),
+    data: self.response,
   }],
   [['gcp', '$project', 'compute', 'zones', '$zone', 'instances'], a.table.node + gcp.project + gcp.paginated + {
     response:: call(
@@ -742,7 +753,7 @@ local referenced = gcp.referenced {
     ],
   }],
   [['gcp', '$project', 'compute', 'zones', '$zone', 'instances', '$instance'], a.resource.node + gcp.project + referenced + {
-    data: call(
+    response:: call(
       self.ctx,
       'compute.instances.get',
       {
@@ -750,6 +761,7 @@ local referenced = gcp.referenced {
         instance: $.instance,
       }
     ),
+    data: self.response,
   }],
   [['gcp', '$project', 'compute', 'zones', '$zone', 'machineTypes'], a.table.node + gcp.project + gcp.paginated + {
     response:: call(
@@ -784,7 +796,7 @@ local referenced = gcp.referenced {
     ],
   }],
   [['gcp', '$project', 'compute', 'zones', '$zone', 'machineTypes', '$machineType'], a.resource.node + gcp.project + referenced + {
-    data: call(
+    response:: call(
       self.ctx,
       'compute.machineTypes.get',
       {
@@ -792,5 +804,6 @@ local referenced = gcp.referenced {
         machineType: $.machineType,
       }
     ),
+    data: self.response,
   }],
 ]

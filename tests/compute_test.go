@@ -126,12 +126,12 @@ func TestMissingInstanceReturnsStatus(t *testing.T) {
 	when.
 		the_jsonnet_is_evaluated(computePrelude + `
 			local s = call('compute.instances.get', { zone: 'europe-west1-b', instance: 'missing' });
-			{ kind: s.kind, code: s.code, reason: s.reason }
+			{ code: s._failure.code, reason: s._failure.reason }
 		`)
 
 	then.
 		there_is_no_error().and().
-		the_output_is(`{"kind": "Status", "code": 404, "reason": "NOT_FOUND"}`)
+		the_output_is(`{"code": 404, "reason": "NOT_FOUND"}`)
 }
 
 func TestProjectsAreIsolated(t *testing.T) {
@@ -168,8 +168,8 @@ func TestDeniedAndMutatingMethodsAreRejected(t *testing.T) {
 		the_jsonnet_is_evaluated(computePrelude + `
 			local instance = { zone: 'europe-west1-b', instance: 'vm-1' };
 			{
-			  serialPort: call('compute.instances.getSerialPortOutput', instance).code,
-			  delete: call('compute.instances.delete', instance).code,
+			  serialPort: call('compute.instances.getSerialPortOutput', instance)._failure.code,
+			  delete: call('compute.instances.delete', instance)._failure.code,
 			  stillThere: call('compute.instances.get', instance).status,
 			}
 		`)
