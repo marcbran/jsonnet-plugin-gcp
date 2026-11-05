@@ -70,7 +70,7 @@ func TestObjectMetadataButNotMedia(t *testing.T) {
 			local object = { bucket: bucket('logs'), object: 'app/a+b c.log' };
 			{
 			  size: call('storage.objects.get', object).size,
-			  media: call('storage.objects.get', object { alt: 'media' }).code,
+			  media: call('storage.objects.get', object { alt: 'media' })._failure.code,
 			}
 		`)
 

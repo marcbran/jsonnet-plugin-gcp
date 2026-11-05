@@ -9,6 +9,7 @@ import (
 
 	"github.com/google/go-jsonnet"
 	"github.com/google/go-jsonnet/ast"
+	"github.com/marcbran/jpoet/pkg/jpoet"
 )
 
 type CallInput struct {
@@ -25,9 +26,9 @@ func Call(cfg *Config) jsonnet.NativeFunction {
 		Func: func(args []any) (any, error) {
 			ci, err := parseCallInput(args)
 			if err != nil {
-				return failureStatus(http.StatusBadRequest, "", err.Error()), nil
+				return nil, jpoet.NewFailure(http.StatusBadRequest, err.Error())
 			}
-			return runCall(context.Background(), cfg, ci), nil
+			return runCall(context.Background(), cfg, ci)
 		},
 	}
 }
@@ -67,29 +68,29 @@ func parseCallInput(args []any) (CallInput, error) {
 	}, nil
 }
 
-func runCall(ctx context.Context, cfg *Config, ci CallInput) any {
+func runCall(ctx context.Context, cfg *Config, ci CallInput) (any, error) {
 	svc, err := cfg.registry.service(ci.Service)
 	if err != nil {
-		return failureStatus(http.StatusBadRequest, "", err.Error())
+		return nil, jpoet.NewFailure(http.StatusBadRequest, err.Error())
 	}
 	m, err := svc.Method(ci.Method)
 	if err != nil {
-		return failureStatus(http.StatusBadRequest, "", err.Error())
+		return nil, jpoet.NewFailure(http.StatusBadRequest, err.Error())
 	}
 	if !svc.Readable(m) {
-		return failureStatus(http.StatusForbidden, "", fmt.Sprintf("%s is not an allowed read method", m.ID))
+		return nil, jpoet.NewFailure(http.StatusForbidden, fmt.Sprintf("%s is not an allowed read method", m.ID))
 	}
 	endpoint, err := cfg.Endpoint(svc)
 	if err != nil {
-		return failureStatus(http.StatusBadRequest, "", err.Error())
+		return nil, jpoet.NewFailure(http.StatusBadRequest, err.Error())
 	}
 	req, err := encode(m, ci)
 	if err != nil {
-		return failureStatus(http.StatusBadRequest, "", fmt.Sprintf("%s: %s", m.ID, err))
+		return nil, jpoet.NewFailure(http.StatusBadRequest, fmt.Sprintf("%s: %s", m.ID, err))
 	}
 	creds, err := cfg.Credentials(ctx, ci)
 	if err != nil {
-		return failureStatus(http.StatusUnauthorized, "", err.Error())
+		return nil, jpoet.NewFailure(http.StatusUnauthorized, err.Error())
 	}
 	url := endpoint + "/" + svc.ServicePath + req.Path
 	if len(req.Query) > 0 {
@@ -97,7 +98,7 @@ func runCall(ctx context.Context, cfg *Config, ci CallInput) any {
 	}
 	httpReq, err := http.NewRequestWithContext(ctx, m.HTTPMethod, url, nil)
 	if err != nil {
-		return failureStatus(http.StatusBadRequest, "", err.Error())
+		return nil, jpoet.NewFailure(http.StatusBadRequest, err.Error())
 	}
 	httpReq.Header.Set("Accept", "application/json")
 	if creds.Token != "" {
@@ -105,29 +106,29 @@ func runCall(ctx context.Context, cfg *Config, ci CallInput) any {
 	}
 	httpResp, err := cfg.Client.Do(httpReq)
 	if err != nil {
-		return failureStatus(http.StatusBadGateway, "", err.Error())
+		return nil, jpoet.NewFailure(http.StatusBadGateway, err.Error())
 	}
 	body, err := io.ReadAll(httpResp.Body)
 	closeErr := httpResp.Body.Close()
 	if err != nil {
-		return failureStatus(http.StatusBadGateway, "", err.Error())
+		return nil, jpoet.NewFailure(http.StatusBadGateway, err.Error())
 	}
 	if closeErr != nil {
-		return failureStatus(http.StatusBadGateway, "", closeErr.Error())
+		return nil, jpoet.NewFailure(http.StatusBadGateway, closeErr.Error())
 	}
 	if httpResp.StatusCode < 200 || httpResp.StatusCode > 299 {
 		reason, msg := decodeError(body)
-		return failureStatus(httpResp.StatusCode, reason, msg)
+		return nil, &jpoet.Failure{Code: httpResp.StatusCode, Reason: reason, Message: msg}
 	}
 	if len(body) == 0 {
-		return map[string]any{}
+		return map[string]any{}, nil
 	}
 	var out any
 	err = json.Unmarshal(body, &out)
 	if err != nil {
-		return failureStatus(http.StatusBadGateway, "", fmt.Sprintf("decode response: %s", err))
+		return nil, jpoet.NewFailure(http.StatusBadGateway, fmt.Sprintf("decode response: %s", err))
 	}
-	return out
+	return out, nil
 }
 
 type errorBody struct {
@@ -151,18 +152,4 @@ func decodeError(body []byte) (string, string) {
 		reason = e.Error.Errors[0].Reason
 	}
 	return reason, e.Error.Message
-}
-
-func failureStatus(code int, reason string, msg string) map[string]any {
-	if reason == "" {
-		reason = http.StatusText(code)
-	}
-	return map[string]any{
-		"apiVersion": "v1",
-		"kind":       "Status",
-		"status":     "Failure",
-		"code":       float64(code),
-		"message":    msg,
-		"reason":     reason,
-	}
 }

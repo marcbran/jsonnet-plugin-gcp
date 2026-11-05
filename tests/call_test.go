@@ -12,12 +12,12 @@ func TestInvalidCallsReturnStatus(t *testing.T) {
 			local gcp = import 'main.libsonnet';
 			local ctx = import 'ctx.libsonnet';
 			{
-			  noProject: gcp.call({}, 'compute', 'compute.zones.list').message,
-			  projectParam: gcp.call(ctx, 'compute', 'compute.zones.list', { project: 'other' }).message,
-			  missingParam: gcp.call(ctx, 'compute', 'compute.instances.list').message,
-			  unknownParam: gcp.call(ctx, 'compute', 'compute.zones.list', { alt: 'media' }).message,
-			  unknownMethod: gcp.call(ctx, 'compute', 'compute.nothing.list').message,
-			  unknownService: gcp.call(ctx, 'run', 'run.projects.locations.services.list').message,
+			  noProject: gcp.call({}, 'compute', 'compute.zones.list')._failure.message,
+			  projectParam: gcp.call(ctx, 'compute', 'compute.zones.list', { project: 'other' })._failure.message,
+			  missingParam: gcp.call(ctx, 'compute', 'compute.instances.list')._failure.message,
+			  unknownParam: gcp.call(ctx, 'compute', 'compute.zones.list', { alt: 'media' })._failure.message,
+			  unknownMethod: gcp.call(ctx, 'compute', 'compute.nothing.list')._failure.message,
+			  unknownService: gcp.call(ctx, 'run', 'run.projects.locations.services.list')._failure.message,
 			}
 		`)
 
