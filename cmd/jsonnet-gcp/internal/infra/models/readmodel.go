@@ -14,8 +14,8 @@ type Model struct {
 	Title       string             `json:"title"`
 	Version     string             `json:"version"`
 	ServicePath string             `json:"servicePath"`
-	Methods map[string]Method  `json:"methods"`
-	Schemas map[string]*Schema `json:"schemas"`
+	Methods     map[string]Method  `json:"methods"`
+	Schemas     map[string]*Schema `json:"schemas"`
 }
 
 type Method struct {
@@ -51,9 +51,9 @@ type document struct {
 	Title       string               `json:"title"`
 	Version     string               `json:"version"`
 	ServicePath string               `json:"servicePath"`
-	Methods   map[string]*method   `json:"methods"`
-	Resources map[string]*resource `json:"resources"`
-	Schemas   map[string]*Schema   `json:"schemas"`
+	Methods     map[string]*method   `json:"methods"`
+	Resources   map[string]*resource `json:"resources"`
+	Schemas     map[string]*Schema   `json:"schemas"`
 }
 
 type resource struct {
@@ -77,12 +77,12 @@ func readModel(svc *gcp.Service, raw []byte) (*Model, error) {
 		return nil, fmt.Errorf("parse discovery document: %w", err)
 	}
 	out := &Model{
-		Name:    doc.Name,
-		Title:   doc.Title,
+		Name:        doc.Name,
+		Title:       doc.Title,
 		Version:     doc.Version,
 		ServicePath: doc.ServicePath,
 		Methods:     map[string]Method{},
-		Schemas: doc.Schemas,
+		Schemas:     doc.Schemas,
 	}
 	err = collect(svc, out.Methods, nil, doc.Methods, doc.Resources)
 	if err != nil {

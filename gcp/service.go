@@ -37,11 +37,11 @@ type Parameter struct {
 }
 
 type document struct {
-	Name        string             `json:"name"`
-	Version     string             `json:"version"`
-	RootURL     string             `json:"rootUrl"`
-	ServicePath string             `json:"servicePath"`
-	Methods     map[string]*Method `json:"methods"`
+	Name        string               `json:"name"`
+	Version     string               `json:"version"`
+	RootURL     string               `json:"rootUrl"`
+	ServicePath string               `json:"servicePath"`
+	Methods     map[string]*Method   `json:"methods"`
 	Resources   map[string]*resource `json:"resources"`
 }
 
