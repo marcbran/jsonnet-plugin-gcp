@@ -5,7 +5,6 @@ import (
 	"strings"
 	"time"
 
-	"github.com/google/go-jsonnet"
 	"github.com/marcbran/jpoet/pkg/jpoet"
 )
 
@@ -83,7 +82,7 @@ func Plugin(opts ...Option) *jpoet.Plugin {
 	for _, o := range opts {
 		o(cfg)
 	}
-	return jpoet.NewPlugin("gcp", []jsonnet.NativeFunction{
-		Call(cfg),
-	}, cfg.pluginOpts...)
+	return jpoet.NewPlugin("gcp", nil, append([]jpoet.PluginOption{
+		jpoet.WithFunctions(Call(cfg)),
+	}, cfg.pluginOpts...)...)
 }
