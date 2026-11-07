@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/marcbran/jsonnet-plugin-gcp/compare/v0.1.0...v0.2.0) (2026-11-07)
+
+
+### Features
+
+* pass the evaluation context to plugin calls ([#5](https://github.com/marcbran/jsonnet-plugin-gcp/issues/5)) ([c2e2837](https://github.com/marcbran/jsonnet-plugin-gcp/commit/c2e2837847e147254ce23b2b214fc699e87d5fee))
+
 ## [0.1.0](https://github.com/marcbran/jsonnet-plugin-gcp/compare/v0.0.0...v0.1.0) (2026-11-05)
 
 
