@@ -1,7 +1,7 @@
 local p = import 'pkg/main.libsonnet';
 
 p.pkg({
-  source: 'https://github.com/marcbran/jsonnet-plugin-gcp',
+  source: 'https://github.com/marcbran/jsonnet-plugin-gcp/tree/main/pkg/jsonnet-plugin-gcp',
   repo: 'https://github.com/marcbran/jsonnet.git',
   branch: 'plugin/gcp',
   path: 'plugin/gcp',

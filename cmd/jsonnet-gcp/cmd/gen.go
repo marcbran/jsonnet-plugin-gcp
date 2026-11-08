@@ -21,7 +21,7 @@ var genCmd = &cobra.Command{
 
 func init() {
 	genCmd.Flags().String("inputs", "", "directory with resources.json and columns.json (default: ./SERVICE/inference)")
-	genCmd.Flags().StringP("out", "o", "", "package directory main.libsonnet, pkg.libsonnet and mixins.libsonnet are written into (default: ./SERVICE/arcourse)")
+	genCmd.Flags().StringP("out", "o", "", "package directory main.libsonnet, pkg.libsonnet, mixins.libsonnet and jsonnetfile.json are written into (default: ./pkg/arcourse-gcp-SERVICE)")
 }
 
 func runGen(cmd *cobra.Command, args []string) error {
