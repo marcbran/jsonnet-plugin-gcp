@@ -2,6 +2,7 @@ local projectParam = 'project';
 local pageToken = 'pageToken';
 local nextPageToken = 'nextPageToken';
 local pageSize = 'maxResults';
+local sortParams = ['orderBy'];
 local maxColumns = 5;
 local preferredColumns = ['status', 'state', 'location', 'type', 'storageClass', 'sizeGb', 'size', 'creationTimestamp', 'timeCreated', 'updated'];
 
@@ -20,6 +21,7 @@ local label(name) =
   model:: error 'tree requires a model',
   overrides:: {},
   columns:: [],
+  params:: [],
 
   local t = self,
   local methods = t.model.methods,
@@ -70,14 +72,40 @@ local label(name) =
     local scoped = std.get(std.get(std.get(properties(aggregatedRef), 'items', {}), 'additionalProperties', {}), '$ref', null);
     if scoped == null then null else arrayProperty(scoped, ['warning']),
 
-  local paramType(p) = if std.member(['integer', 'number'], p.type) then 'number' else 'string',
+  local scalarSpec(p) =
+    {
+      type:
+        if std.member(['integer', 'number'], p.type) then 'number'
+        else if p.type == 'boolean' then 'boolean'
+        else 'string',
+    } + (if std.objectHas(p, 'enum') then { enum: p.enum } else {}),
 
-  local queryParams(m) = [
-    { name: name, type: paramType(m.parameters[name]) }
-    for name in std.objectFields(m.parameters)
-    if m.parameters[name].location == 'query'
-    if !std.member([projectParam, pageToken, pageSize], name)
-  ],
+  local paramSpec(p) =
+    if std.get(p, 'repeated', false) then { type: 'array', items: scalarSpec(p) }
+    else scalarSpec(p),
+
+  local inferredRoles(id) = {
+    [param.name]: param.role
+    for entry in t.params
+    if entry.method == id
+    for param in entry.params
+    if std.member(['filter', 'shaping', 'pagination', 'sort'], param.role)
+  },
+
+  local descriptionOf(p) =
+    if std.objectHas(p, 'description') then { description: p.description } else {},
+
+  local queryParams(m) =
+    local roles = inferredRoles(m.id);
+    [
+      { name: name } + paramSpec(m.parameters[name])
+      + (if std.objectHas(roles, name) then { role: roles[name] } else {})
+      + (if std.member(sortParams, name) then { role: 'sort' } else {})
+      + descriptionOf(m.parameters[name])
+      for name in std.objectFields(m.parameters)
+      if m.parameters[name].location == 'query'
+      if !std.member([projectParam, pageToken, pageSize], name)
+    ],
 
   local paginated(m) =
     std.objectHas(m.parameters, pageToken) &&

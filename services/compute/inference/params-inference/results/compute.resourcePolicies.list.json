@@ -1,0 +1,1 @@
+{"confidence":"high","method":"compute.resourcePolicies.list","params":[{"name":"filter","reason":"Filters which resources are returned.","role":"filter"},{"name":"orderBy","reason":"Controls the order of the list results.","role":"sort"}],"reason":"The descriptions explicitly identify filtering and sorting behavior."}

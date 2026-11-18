@@ -1,0 +1,80 @@
+[
+   {
+      "method": "storage.buckets.list",
+      "params": [
+         {
+            "name": "prefix",
+            "role": "filter"
+         },
+         {
+            "name": "projection",
+            "role": "shaping"
+         },
+         {
+            "name": "returnPartialSuccess",
+            "role": "shaping"
+         },
+         {
+            "name": "softDeleted",
+            "role": "filter"
+         },
+         {
+            "name": "userProject",
+            "role": "other"
+         }
+      ]
+   },
+   {
+      "method": "storage.objects.list",
+      "params": [
+         {
+            "name": "delimiter",
+            "role": "shaping"
+         },
+         {
+            "name": "endOffset",
+            "role": "filter"
+         },
+         {
+            "name": "filter",
+            "role": "filter"
+         },
+         {
+            "name": "includeFoldersAsPrefixes",
+            "role": "shaping"
+         },
+         {
+            "name": "includeTrailingDelimiter",
+            "role": "shaping"
+         },
+         {
+            "name": "matchGlob",
+            "role": "filter"
+         },
+         {
+            "name": "prefix",
+            "role": "filter"
+         },
+         {
+            "name": "projection",
+            "role": "shaping"
+         },
+         {
+            "name": "softDeleted",
+            "role": "filter"
+         },
+         {
+            "name": "startOffset",
+            "role": "filter"
+         },
+         {
+            "name": "userProject",
+            "role": "other"
+         },
+         {
+            "name": "versions",
+            "role": "filter"
+         }
+      ]
+   }
+]

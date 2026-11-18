@@ -28,10 +28,12 @@ type Method struct {
 }
 
 type Parameter struct {
-	Type     string `json:"type"`
-	Location string `json:"location"`
-	Required bool   `json:"required,omitempty"`
-	Repeated bool   `json:"repeated,omitempty"`
+	Type        string   `json:"type"`
+	Location    string   `json:"location"`
+	Required    bool     `json:"required,omitempty"`
+	Repeated    bool     `json:"repeated,omitempty"`
+	Enum        []string `json:"enum,omitempty"`
+	Description string   `json:"description,omitempty"`
 }
 
 type Schema struct {

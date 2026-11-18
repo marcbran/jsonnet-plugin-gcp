@@ -9,6 +9,7 @@ import (
 	"github.com/marcbran/jsonnet-plugin-gcp/cmd/jsonnet-gcp/internal/jsonnetgcp/columns"
 	"github.com/marcbran/jsonnet-plugin-gcp/cmd/jsonnet-gcp/internal/jsonnetgcp/gen"
 	"github.com/marcbran/jsonnet-plugin-gcp/cmd/jsonnet-gcp/internal/jsonnetgcp/infer"
+	"github.com/marcbran/jsonnet-plugin-gcp/cmd/jsonnet-gcp/internal/jsonnetgcp/params"
 	gcppkg "github.com/marcbran/jsonnet-plugin-gcp/cmd/jsonnet-gcp/pkg/jsonnetgcp"
 )
 
@@ -37,6 +38,27 @@ func (f *facade) Generate(ctx context.Context, in gcppkg.GenerateInput) (gcppkg.
 
 func (f *facade) InferColumns(ctx context.Context, in gcppkg.InferInput) (gcppkg.InferOutput, error) {
 	kind, err := columns.Kind()
+	if err != nil {
+		return gcppkg.InferOutput{}, err
+	}
+	out, err := infer.Exec(ctx, f.loader, kind, infer.Input{
+		Service:   in.Service,
+		Resources: in.Resources,
+		Out:       in.Out,
+		WorkDir:   in.WorkDir,
+		Model:     in.Model,
+		Limit:     in.Limit,
+		Force:     in.Force,
+		Progress:  f.progress,
+	})
+	if err != nil {
+		return gcppkg.InferOutput{}, err
+	}
+	return gcppkg.InferOutput{Out: out.Out, WorkDir: out.WorkDir, Files: out.Files}, nil
+}
+
+func (f *facade) InferParams(ctx context.Context, in gcppkg.InferInput) (gcppkg.InferOutput, error) {
+	kind, err := params.Kind()
 	if err != nil {
 		return gcppkg.InferOutput{}, err
 	}

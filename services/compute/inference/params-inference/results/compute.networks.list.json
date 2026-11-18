@@ -1,0 +1,1 @@
+{"confidence":"high","method":"compute.networks.list","params":[{"name":"filter","reason":"Filters which network resources are returned.","role":"filter"},{"name":"orderBy","reason":"Sets the order of the listed resources.","role":"sort"}],"reason":"The descriptions explicitly identify filtering and sorting behavior."}

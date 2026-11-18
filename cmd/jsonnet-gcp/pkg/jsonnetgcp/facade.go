@@ -32,4 +32,5 @@ type GenerateOutput struct {
 type Facade interface {
 	Generate(ctx context.Context, in GenerateInput) (GenerateOutput, error)
 	InferColumns(ctx context.Context, in InferInput) (InferOutput, error)
+	InferParams(ctx context.Context, in InferInput) (InferOutput, error)
 }

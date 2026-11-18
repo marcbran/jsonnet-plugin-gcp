@@ -74,6 +74,33 @@ func (f *CLIFacade) InferColumns(ctx context.Context, in gcppkg.InferInput) (gcp
 	return gcppkg.InferOutput{Out: strings.TrimSpace(stdout), WorkDir: in.WorkDir}, nil
 }
 
+func (f *CLIFacade) InferParams(ctx context.Context, in gcppkg.InferInput) (gcppkg.InferOutput, error) {
+	args := []string{"params", "infer", in.Service, "-q"}
+	if in.Out != "" {
+		args = append(args, "--out", in.Out)
+	}
+	if in.WorkDir != "" {
+		args = append(args, "--workdir", in.WorkDir)
+	}
+	if in.Resources != "" {
+		args = append(args, "--resources", in.Resources)
+	}
+	if in.Model != "" {
+		args = append(args, "--model", in.Model)
+	}
+	if in.Limit > 0 {
+		args = append(args, "--limit", fmt.Sprintf("%d", in.Limit))
+	}
+	if in.Force {
+		args = append(args, "--force")
+	}
+	stdout, err := f.run(ctx, args)
+	if err != nil {
+		return gcppkg.InferOutput{}, err
+	}
+	return gcppkg.InferOutput{Out: strings.TrimSpace(stdout), WorkDir: in.WorkDir}, nil
+}
+
 func (f *CLIFacade) run(ctx context.Context, args []string) (string, error) {
 	cmd := exec.CommandContext(ctx, f.binaryPath, args...)
 	cmd.Env = append(os.Environ(),
