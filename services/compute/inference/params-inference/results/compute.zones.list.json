@@ -1,0 +1,1 @@
+{"confidence":"high","method":"compute.zones.list","params":[{"name":"filter","reason":"Filters which resources appear in the response.","role":"filter"},{"name":"orderBy","reason":"Controls the order of the listed results.","role":"sort"}],"reason":"Both parameters explicitly describe filtering or ordering list results."}

@@ -44,11 +44,12 @@ local pkg(service, title) = |||
   title: title,
 };
 
-function(service, model, resources, columns)
+function(service, model, resources, columns, params)
   local tree = treeLib {
     model:: model,
     overrides:: resources,
     columns:: columns,
+    params:: params,
   };
   {
     'main.libsonnet': generateLib {

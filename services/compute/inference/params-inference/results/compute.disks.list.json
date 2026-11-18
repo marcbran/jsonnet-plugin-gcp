@@ -1,0 +1,1 @@
+{"confidence":"high","method":"compute.disks.list","params":[{"name":"filter","reason":"Filters resources included in the response.","role":"filter"},{"name":"orderBy","reason":"Controls the order of the list results.","role":"sort"}],"reason":"Both parameters explicitly describe filtering or sorting the listed disks."}

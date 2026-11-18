@@ -1,0 +1,1 @@
+{"confidence":"high","method":"compute.machineTypes.list","params":[{"name":"filter","reason":"Filters which resources are returned.","role":"filter"},{"name":"orderBy","reason":"Controls the order of list results.","role":"sort"}],"reason":"The descriptions identify filter as a resource filter and orderBy as a sort order."}

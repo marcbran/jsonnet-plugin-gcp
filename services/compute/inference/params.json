@@ -1,0 +1,305 @@
+[
+   {
+      "method": "compute.addresses.aggregatedList",
+      "params": [
+         {
+            "name": "filter",
+            "role": "filter"
+         },
+         {
+            "name": "includeAllScopes",
+            "role": "shaping"
+         },
+         {
+            "name": "orderBy",
+            "role": "sort"
+         },
+         {
+            "name": "serviceProjectNumber",
+            "role": "filter"
+         }
+      ]
+   },
+   {
+      "method": "compute.addresses.list",
+      "params": [
+         {
+            "name": "filter",
+            "role": "filter"
+         },
+         {
+            "name": "orderBy",
+            "role": "sort"
+         }
+      ]
+   },
+   {
+      "method": "compute.disks.aggregatedList",
+      "params": [
+         {
+            "name": "filter",
+            "role": "filter"
+         },
+         {
+            "name": "includeAllScopes",
+            "role": "filter"
+         },
+         {
+            "name": "orderBy",
+            "role": "sort"
+         },
+         {
+            "name": "serviceProjectNumber",
+            "role": "other"
+         }
+      ]
+   },
+   {
+      "method": "compute.disks.list",
+      "params": [
+         {
+            "name": "filter",
+            "role": "filter"
+         },
+         {
+            "name": "orderBy",
+            "role": "sort"
+         }
+      ]
+   },
+   {
+      "method": "compute.firewalls.list",
+      "params": [
+         {
+            "name": "filter",
+            "role": "filter"
+         },
+         {
+            "name": "orderBy",
+            "role": "sort"
+         }
+      ]
+   },
+   {
+      "method": "compute.globalAddresses.list",
+      "params": [
+         {
+            "name": "filter",
+            "role": "filter"
+         },
+         {
+            "name": "orderBy",
+            "role": "sort"
+         }
+      ]
+   },
+   {
+      "method": "compute.images.list",
+      "params": [
+         {
+            "name": "filter",
+            "role": "filter"
+         },
+         {
+            "name": "orderBy",
+            "role": "sort"
+         }
+      ]
+   },
+   {
+      "method": "compute.instances.aggregatedList",
+      "params": [
+         {
+            "name": "filter",
+            "role": "filter"
+         },
+         {
+            "name": "includeAllScopes",
+            "role": "shaping"
+         },
+         {
+            "name": "orderBy",
+            "role": "sort"
+         },
+         {
+            "name": "serviceProjectNumber",
+            "role": "other"
+         }
+      ]
+   },
+   {
+      "method": "compute.instances.list",
+      "params": [
+         {
+            "name": "filter",
+            "role": "filter"
+         },
+         {
+            "name": "orderBy",
+            "role": "sort"
+         }
+      ]
+   },
+   {
+      "method": "compute.machineTypes.aggregatedList",
+      "params": [
+         {
+            "name": "filter",
+            "role": "filter"
+         },
+         {
+            "name": "includeAllScopes",
+            "role": "filter"
+         },
+         {
+            "name": "orderBy",
+            "role": "sort"
+         },
+         {
+            "name": "serviceProjectNumber",
+            "role": "other"
+         }
+      ]
+   },
+   {
+      "method": "compute.machineTypes.list",
+      "params": [
+         {
+            "name": "filter",
+            "role": "filter"
+         },
+         {
+            "name": "orderBy",
+            "role": "sort"
+         }
+      ]
+   },
+   {
+      "method": "compute.networks.list",
+      "params": [
+         {
+            "name": "filter",
+            "role": "filter"
+         },
+         {
+            "name": "orderBy",
+            "role": "sort"
+         }
+      ]
+   },
+   {
+      "method": "compute.regions.list",
+      "params": [
+         {
+            "name": "filter",
+            "role": "filter"
+         },
+         {
+            "name": "orderBy",
+            "role": "sort"
+         }
+      ]
+   },
+   {
+      "method": "compute.resourcePolicies.aggregatedList",
+      "params": [
+         {
+            "name": "filter",
+            "role": "filter"
+         },
+         {
+            "name": "includeAllScopes",
+            "role": "filter"
+         },
+         {
+            "name": "orderBy",
+            "role": "sort"
+         },
+         {
+            "name": "serviceProjectNumber",
+            "role": "other"
+         }
+      ]
+   },
+   {
+      "method": "compute.resourcePolicies.list",
+      "params": [
+         {
+            "name": "filter",
+            "role": "filter"
+         },
+         {
+            "name": "orderBy",
+            "role": "sort"
+         }
+      ]
+   },
+   {
+      "method": "compute.snapshots.list",
+      "params": [
+         {
+            "name": "filter",
+            "role": "filter"
+         },
+         {
+            "name": "orderBy",
+            "role": "sort"
+         }
+      ]
+   },
+   {
+      "method": "compute.subnetworks.aggregatedList",
+      "params": [
+         {
+            "name": "filter",
+            "role": "filter"
+         },
+         {
+            "name": "includeAllScopes",
+            "role": "filter"
+         },
+         {
+            "name": "orderBy",
+            "role": "sort"
+         },
+         {
+            "name": "serviceProjectNumber",
+            "role": "other"
+         },
+         {
+            "name": "views",
+            "role": "shaping"
+         }
+      ]
+   },
+   {
+      "method": "compute.subnetworks.list",
+      "params": [
+         {
+            "name": "filter",
+            "role": "filter"
+         },
+         {
+            "name": "orderBy",
+            "role": "sort"
+         },
+         {
+            "name": "views",
+            "role": "shaping"
+         }
+      ]
+   },
+   {
+      "method": "compute.zones.list",
+      "params": [
+         {
+            "name": "filter",
+            "role": "filter"
+         },
+         {
+            "name": "orderBy",
+            "role": "sort"
+         }
+      ]
+   }
+]

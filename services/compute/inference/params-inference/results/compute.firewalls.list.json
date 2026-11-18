@@ -1,0 +1,1 @@
+{"confidence":"high","method":"compute.firewalls.list","params":[{"name":"filter","reason":"Filters which firewall resources are returned.","role":"filter"},{"name":"orderBy","reason":"Controls the order of the returned resources.","role":"sort"}],"reason":"Both descriptions directly specify filtering or sorting list results."}

@@ -66,6 +66,25 @@ func (s *Stage) a_cached_result(method string, result string) *Stage {
 	return s
 }
 
+func (s *Stage) a_cached_params_result(method string, result string) *Stage {
+	path := filepath.Join(s.input.WorkDir, "params-inference", "results", method+".json")
+	err := os.MkdirAll(filepath.Dir(path), 0755)
+	require.NoError(s.t, err)
+	err = os.WriteFile(path, []byte(result), 0644)
+	require.NoError(s.t, err)
+	return s
+}
+
+func (s *Stage) the_params_are_inferred() *Stage {
+	out, err := s.facade.InferParams(context.Background(), s.input)
+	s.lastOutput = out
+	s.lastErr = ""
+	if err != nil {
+		s.lastErr = err.Error()
+	}
+	return s
+}
+
 func (s *Stage) the_columns_are_inferred() *Stage {
 	out, err := s.facade.InferColumns(context.Background(), s.input)
 	s.lastOutput = out

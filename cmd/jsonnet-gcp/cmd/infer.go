@@ -97,3 +97,5 @@ func runInfer(cmd *cobra.Command, service string, kind string, run inferFunc) er
 }
 
 var columnsCmd = newInferCmd("columns", "Work with table columns", gcppkg.Facade.InferColumns)
+
+var paramsCmd = newInferCmd("params", "Work with the roles of list method params", gcppkg.Facade.InferParams)

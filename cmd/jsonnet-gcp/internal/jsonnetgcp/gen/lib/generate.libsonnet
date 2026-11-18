@@ -96,7 +96,7 @@ local isRouteVar(seg) = std.startsWith(seg, '$');
     if std.length(params) == 0 then []
     else [
       objectField('_paramSpecs', prettyArray([
-        literal({ name: p.name, type: p.type, default: null })
+        literal({ name: p.name, type: p.type, default: null } + { [field]: p[field] for field in ['items', 'enum', 'role'] if std.objectHas(p, field) })
         for p in params
       ], 4)) { SuperSugar: true },
     ],

@@ -9,18 +9,22 @@ add-model api version="v1":
 arcourse-gen service:
     go run ./cmd/jsonnet-gcp gen "{{service}}" --inputs "services/{{service}}/inference" --out "pkg/arcourse-gcp-{{service}}"
 
-arcourse-infer service:
+arcourse-infer service job="columns":
     #!/usr/bin/env bash
     set -euo pipefail
+    case "{{job}}" in
+      columns|params) ;;
+      *) echo "unknown inference job: {{job}}; expected columns or params" >&2; exit 1 ;;
+    esac
     extra=()
     if [ -n "${LIMIT:-}" ]; then extra+=(--limit "$LIMIT"); fi
     if [ -n "${MODEL:-}" ]; then extra+=(--model "$MODEL"); fi
     if [ "${FORCE:-}" = "1" ]; then extra+=(--force); fi
-    go run ./cmd/jsonnet-gcp columns infer "{{service}}" \
+    go run ./cmd/jsonnet-gcp "{{job}}" infer "{{service}}" \
       --workdir "services/{{service}}/inference" \
       "${extra[@]+"${extra[@]}"}"
 
-arcourse-infer-service service: (arcourse-infer service) (arcourse-gen service)
+arcourse-infer-service service: (arcourse-infer service "columns") (arcourse-infer service "params") (arcourse-gen service)
 
 build-jsonnet: vendor-jsonnet
     for dir in pkg/*/; do \

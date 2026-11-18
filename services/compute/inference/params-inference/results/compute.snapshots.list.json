@@ -1,0 +1,1 @@
+{"confidence":"high","method":"compute.snapshots.list","params":[{"name":"filter","reason":"Filters resources returned in the response.","role":"filter"},{"name":"orderBy","reason":"Controls the order of list results.","role":"sort"}],"reason":"The descriptions directly identify filtering and sorting behavior."}
