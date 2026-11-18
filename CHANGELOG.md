@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/marcbran/jsonnet-plugin-gcp/compare/v0.2.0...v0.3.0) (2026-11-18)
+
+
+### Features
+
+* type param specs and infer their roles ([#11](https://github.com/marcbran/jsonnet-plugin-gcp/issues/11)) ([b6eef2d](https://github.com/marcbran/jsonnet-plugin-gcp/commit/b6eef2dbd73e3da9264f6540b22b8edad5681cc2))
+
 ## [0.2.0](https://github.com/marcbran/jsonnet-plugin-gcp/compare/v0.1.0...v0.2.0) (2026-11-07)
 
 
